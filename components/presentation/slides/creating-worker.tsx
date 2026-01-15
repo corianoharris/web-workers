@@ -3,31 +3,31 @@
 import { motion } from "framer-motion"
 import { CodeStepper } from "../code-stepper"
 
-const code = `// Creates a new Web Worker
+const code = `// Step 1: Hire a new worker for background tasks
 const worker = new Worker(
-  // new URL resolves relative paths safely
+  // Tell it where to find its job description
   new URL('./worker.js', import.meta.url),
-  { type: 'module' } // allows ES modules
+  { type: 'module' } // Use modern JavaScript
 );`
 
 const steps = [
   {
     lines: [1],
-    explanation: "This is a comment explaining what we're doing. Comments help other developers understand your code!",
+    explanation: "This friendly comment tells you (and future you) what's happening. Always leave breadcrumbs!",
   },
   {
     lines: [2],
-    explanation: "We create a new Worker by calling 'new Worker()'. This starts a brand new background thread.",
+    explanation: "This is like hiring a new employee. You're creating a fresh background thread to handle heavy work.",
   },
   {
     lines: [3, 4],
     explanation:
-      "The first argument is the path to your worker file. Using 'new URL()' makes sure the path works correctly in all situations.",
+      "You're telling the worker where to find its instructions (worker.js file). The 'new URL()' makes sure it finds the file no matter where your code runs.",
   },
   {
     lines: [5],
     explanation:
-      "The second argument is an options object. Setting type: 'module' lets you use modern import/export statements in your worker.",
+      "This option says 'use modern JavaScript syntax.' Without it, you'd be stuck with old-school code patterns.",
   },
 ]
 

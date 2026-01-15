@@ -9,7 +9,9 @@ export function WhyWorkersExist() {
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Why Web Workers Exist</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Web Workers let you <span className="font-semibold text-primary">do hard work in the background</span> while keeping your page smooth and responsive.
+          Ever clicked something and felt your page <span className="font-semibold text-primary">freeze</span>? That
+          frustrating moment when nothing responds? Workers prevent that feeling by{" "}
+          <span className="font-semibold text-primary">doing heavy work out of sight</span> so your page stays smooth.
         </p>
       </motion.div>
 
@@ -25,12 +27,12 @@ export function WhyWorkersExist() {
             What&apos;s a Thread?
           </h3>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            A <span className="font-semibold text-foreground">thread</span> is like one person doing a job.
-            Your browser usually has just one person (the main thread) doing everything. Web Workers add more people
-            so they can all work at the same time.
+            Think of a <span className="font-semibold text-foreground">thread</span> like one person working at a desk.
+            Your browser normally has just one person trying to do everything at once. Web Workers are like hiring more
+            people so they can all work at the same time without getting in each other&apos;s way.
           </p>
           <p className="text-muted-foreground text-sm leading-relaxed mt-3">
-            <span className="font-semibold text-foreground">This thread handles:</span>
+            <span className="font-semibold text-foreground">This single person handles:</span>
           </p>
           <ul className="mt-2 space-y-1 text-muted-foreground text-sm">
             <li>• Clicking buttons</li>

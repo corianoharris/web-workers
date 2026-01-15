@@ -3,34 +3,34 @@
 import { motion } from "framer-motion"
 import { CodeStepper } from "../code-stepper"
 
-const code = `// Send data TO the worker
+const code = `// You: "Hey worker, I need help with this!"
 worker.postMessage({
   type: 'START',
   value: 5
 });
 
-// You can send any data type:
-worker.postMessage('hello');        // strings
-worker.postMessage(42);             // numbers
-worker.postMessage([1, 2, 3]);      // arrays
-worker.postMessage({ name: 'Bob' }); // objects`
+// You can send anything:
+worker.postMessage('hello');        // Just text
+worker.postMessage(42);             // Just a number
+worker.postMessage([1, 2, 3]);      // A list of things
+worker.postMessage({ name: 'Bob' }); // A bundle of info`
 
 const steps = [
   {
     lines: [1],
-    explanation: "postMessage() is how you send information to your worker.",
+    explanation: "Think of postMessage() like passing a note to someone. You're sending info to your worker to process.",
   },
   {
     lines: [2, 3, 4, 5],
-    explanation: "Here we send an object with 'type' and 'value'. The worker gets this exact information.",
+    explanation: "Here we're sending a package of info: what type of work we want ('START') and the number to work with (5).",
   },
   {
-    lines: [7, 8],
-    explanation: "You can send simple text or numbers without wrapping them up.",
+    lines: [7, 8, 9],
+    explanation: "You don't always need fancy packages. Sometimes a simple text message or number is all you need.",
   },
   {
-    lines: [9, 10, 11],
-    explanation: "Lists and objects work too! JavaScript makes a copy when sending to the worker.",
+    lines: [10, 11],
+    explanation: "Lists and bundles of info work great too! The worker gets a fresh copy (not your original).",
   },
 ]
 
@@ -56,8 +56,8 @@ export function SendingMessages() {
         className="p-4 rounded-xl bg-primary/10 border border-primary/30"
       >
         <p className="text-foreground text-center">
-          <span className="font-bold text-primary">Remember:</span> The data is copied, not shared. Changes in the
-          worker won&apos;t affect the original data in main thread.
+          <span className="font-bold text-primary">Important:</span> The data is copied like making a photocopy. The
+          worker gets its own version. If it changes something, your original stays untouched.
         </p>
       </motion.div>
     </div>

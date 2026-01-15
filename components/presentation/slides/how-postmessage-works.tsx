@@ -52,8 +52,22 @@ export function HowPostMessageWorks() {
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">How Messages Travel</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Your page and workers talk by sending messages back and forth.
+          Your page and workers talk by sending messages back and forth, like passing notes in class.
         </p>
+        <div className="flex justify-center gap-6 mt-4 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-yellow-400 border-2 border-yellow-500" />
+            <span className="text-muted-foreground">
+              <span className="font-semibold text-yellow-600">Yellow</span> = Your request going out
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-blue-500 border-2 border-blue-600" />
+            <span className="text-muted-foreground">
+              <span className="font-semibold text-blue-600">Blue</span> = The answer coming back
+            </span>
+          </div>
+        </div>
       </motion.div>
 
       <motion.div

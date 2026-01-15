@@ -3,16 +3,16 @@
 import { motion } from "framer-motion"
 import { CodeStepper } from "../code-stepper"
 
-const code = `// Worker receives data FROM the main thread
+const code = `// Worker: "Got your message! Let me check what you need"
 self.onmessage = (event) => {
-  // event.data contains what was sent
+  // Unpack what you sent me
   const { type, value } = event.data;
 
-  console.log('Worker received:', type, value);
+  console.log('Worker: I got your request!', type, value);
 
-  // Now do something with the data!
+  // Time to get to work!
   if (type === 'START') {
-    // Start the heavy calculation
+    // Rolling up my sleeves...
     doHeavyWork(value);
   }
 };`
@@ -21,22 +21,22 @@ const steps = [
   {
     lines: [1, 2],
     explanation:
-      "In your worker file, use self.onmessage to listen. This runs every time the main page sends something.",
+      "This is your worker's inbox. Every time the main page sends something, this function wakes up and reads it.",
   },
   {
     lines: [3, 4],
     explanation:
-      "The 'event' has a 'data' property - that's what was sent. We can pull out the values we need.",
+      "The message arrives in event.data. We're unpacking it like opening a package to see what's inside.",
   },
   {
     lines: [6],
     explanation:
-      "console.log works in workers! Great for checking what you received. Look in your browser's developer tools.",
+      "Your worker can talk back to you through console.log! Check your browser's console to see what it says.",
   },
   {
     lines: [8, 9, 10, 11],
     explanation:
-      "Now use the information. Here we check if the type is 'START' and then start working.",
+      "Now we're checking what kind of work you want. If you said 'START', the worker starts crunching numbers.",
   },
 ]
 
