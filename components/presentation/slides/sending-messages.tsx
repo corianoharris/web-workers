@@ -18,19 +18,19 @@ worker.postMessage({ name: 'Bob' }); // objects`
 const steps = [
   {
     lines: [1],
-    explanation: "We use postMessage() to send data from the main thread to our worker.",
+    explanation: "postMessage() is how you send information to your worker.",
   },
   {
     lines: [2, 3, 4, 5],
-    explanation: "Here we send an object with 'type' and 'value' properties. The worker will receive this exact data.",
+    explanation: "Here we send an object with 'type' and 'value'. The worker gets this exact information.",
   },
   {
     lines: [7, 8],
-    explanation: "You can send simple strings or numbers directly without wrapping them in an object.",
+    explanation: "You can send simple text or numbers without wrapping them up.",
   },
   {
     lines: [9, 10, 11],
-    explanation: "Arrays and objects work too! JavaScript automatically copies the data when sending to the worker.",
+    explanation: "Lists and objects work too! JavaScript makes a copy when sending to the worker.",
   },
 ]
 
@@ -38,9 +38,9 @@ export function SendingMessages() {
   return (
     <div className="space-y-8">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Sending Messages to the Worker</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Talking to Your Worker</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Use <code className="bg-secondary px-2 py-1 rounded">postMessage()</code> to send data from your main code to
+          Use <code className="bg-secondary px-2 py-1 rounded">postMessage()</code> to send information from your page to
           the worker.
         </p>
       </motion.div>

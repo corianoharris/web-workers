@@ -63,11 +63,11 @@ export function CodeStepper({ code, steps, title }: CodeStepperProps) {
         </div>
         <div className="flex items-center justify-between">
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" onClick={prev} disabled={currentStep === 0}>
+            <Button variant="outline" size="sm" onClick={prev} disabled={currentStep === 0} className="hover:bg-primary/10 hover:text-primary hover:border-primary">
               <ChevronLeft className="h-4 w-4" />
               Previous
             </Button>
-            <Button variant="outline" size="sm" onClick={next} disabled={currentStep === steps.length - 1}>
+            <Button variant="outline" size="sm" onClick={next} disabled={currentStep === steps.length - 1} className="hover:bg-primary/10 hover:text-primary hover:border-primary">
               Next
               <ChevronRight className="h-4 w-4" />
             </Button>
@@ -76,7 +76,7 @@ export function CodeStepper({ code, steps, title }: CodeStepperProps) {
             <span className="text-sm text-muted-foreground">
               Step {currentStep + 1} of {steps.length}
             </span>
-            <Button variant="ghost" size="sm" onClick={reset}>
+            <Button variant="ghost" size="sm" onClick={reset} className="hover:bg-primary/10 hover:text-primary">
               <RotateCcw className="h-4 w-4 mr-1" />
               Reset
             </Button>

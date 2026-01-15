@@ -65,10 +65,10 @@ export function DemoUsingWorker() {
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
         <div className="flex items-center justify-center gap-2 text-primary mb-4">
           <CheckCircle2 className="h-6 w-6" />
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Live Demo: Using a Web Worker</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Live Demo: Worker to the Rescue</h2>
         </div>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Now watch the same heavy task run in a Web Worker — the counter keeps running!
+          Same hard work, but now in a worker. Watch the counter keep going!
         </p>
       </motion.div>
 
@@ -80,10 +80,9 @@ export function DemoUsingWorker() {
       >
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">Counter Animation</h3>
+            <h3 className="font-semibold text-foreground">Watch This Counter</h3>
             <p className="text-sm text-muted-foreground">
-              This counter updates every 2 seconds. It should keep running smoothly!{" "}
-              {/* Updated text to match new interval */}
+              This updates every 2 seconds. It should never stop!
             </p>
             <div className="text-6xl font-bold text-primary text-center py-8 bg-primary/10 rounded-xl">{counter}</div>
             <p className="text-xs text-muted-foreground text-center">
@@ -92,8 +91,8 @@ export function DemoUsingWorker() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">Worker Task Control</h3>
-            <p className="text-sm text-muted-foreground">Same 500 million calculations, but now in a Web Worker.</p>
+            <h3 className="font-semibold text-foreground">Try It Out</h3>
+            <p className="text-sm text-muted-foreground">Same 500 million calculations, but now the page stays smooth.</p>
             <div className="space-y-4">
               <Button onClick={runWithWorker} disabled={isRunning} className="w-full">
                 {isRunning ? (
@@ -105,7 +104,7 @@ export function DemoUsingWorker() {
                   </>
                 )}
               </Button>
-              <Button onClick={reset} variant="outline" className="w-full bg-transparent">
+              <Button onClick={reset} variant="outline" className="w-full bg-transparent hover:bg-primary/10 hover:text-primary hover:border-primary">
                 <RotateCcw className="h-4 w-4 mr-2" />
                 Reset
               </Button>
@@ -135,8 +134,8 @@ export function DemoUsingWorker() {
         className="p-4 rounded-xl bg-primary/10 border border-primary/30 text-center"
       >
         <p className="text-foreground">
-          <span className="font-bold text-primary">Amazing!</span> The counter never stops, buttons stay clickable, and
-          the result arrives when ready. This is the power of Web Workers!
+          <span className="font-bold text-primary">See the difference?</span> Everything keeps working. Buttons click, counters count.
+          This is why workers matter!
         </p>
       </motion.div>
     </div>

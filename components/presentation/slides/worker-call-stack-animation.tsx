@@ -603,11 +603,11 @@ export function WorkerCallStackAnimation() {
 
           {/* Controls */}
           <div className="mt-4 flex items-center justify-center gap-2 flex-wrap">
-            <Button variant="outline" size="sm" onClick={prev} disabled={currentStep === 0}>
+            <Button variant="outline" size="sm" onClick={prev} disabled={currentStep === 0} className="hover:bg-primary/10 hover:text-primary hover:border-primary">
               <ChevronLeft className="h-4 w-4 mr-1" />
               Back
             </Button>
-            <Button variant="outline" size="sm" onClick={togglePlay}>
+            <Button variant="outline" size="sm" onClick={togglePlay} className="hover:bg-primary/10 hover:text-primary hover:border-primary">
               {isPlaying ? (
                 <>
                   <Pause className="h-4 w-4 mr-1" />
@@ -620,14 +620,14 @@ export function WorkerCallStackAnimation() {
                 </>
               )}
             </Button>
-            <Button variant="outline" size="sm" onClick={reset}>
+            <Button variant="outline" size="sm" onClick={reset} className="hover:bg-primary/10 hover:text-primary hover:border-primary">
               <RotateCcw className="h-4 w-4 mr-1" />
               Reset
             </Button>
             <span className="text-sm text-muted-foreground px-2">
               {currentStep + 1} / {animationSteps.length}
             </span>
-            <Button variant="outline" size="sm" onClick={next} disabled={currentStep === animationSteps.length - 1}>
+            <Button variant="outline" size="sm" onClick={next} disabled={currentStep === animationSteps.length - 1} className="hover:bg-primary/10 hover:text-primary hover:border-primary">
               Next
               <ChevronRight className="h-4 w-4 ml-1" />
             </Button>

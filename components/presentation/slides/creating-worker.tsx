@@ -37,7 +37,7 @@ export function CreatingWorker() {
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Creating a Worker</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Let&apos;s learn how to create a Web Worker step by step.
+          It only takes a few lines of code. Let&apos;s break it down:
         </p>
       </motion.div>
 
@@ -52,8 +52,8 @@ export function CreatingWorker() {
         className="p-4 rounded-xl bg-accent/10 border border-accent/30 text-center"
       >
         <p className="text-foreground">
-          <span className="font-bold text-accent">Tip:</span> The worker file runs in a completely separate environment.
-          It has its own global scope called <code className="bg-secondary px-1 rounded">self</code> instead of{" "}
+          <span className="font-bold text-accent">Important:</span> Workers run in their own world.
+          They use <code className="bg-secondary px-1 rounded">self</code> instead of{" "}
           <code className="bg-secondary px-1 rounded">window</code>.
         </p>
       </motion.div>

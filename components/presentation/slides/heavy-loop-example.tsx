@@ -34,23 +34,23 @@ worker.postMessage('start');`
 const badSteps = [
   {
     lines: [1, 2, 3, 4, 5, 6, 7, 8],
-    explanation: "This function loops 2 BILLION times! On the main thread, this blocks everything.",
+    explanation: "This function loops 2 BILLION times! Your page freezes until it's done.",
   },
   {
     lines: [10, 11, 12],
     explanation:
-      "When you call heavyTask(), your page completely freezes until all 2 billion loops are done. Users can't click anything!",
+      "When you call this, your entire page stops working. Users can't click, scroll, or do anything!",
   },
 ]
 
 const goodSteps = [
   {
     lines: [1, 2, 3, 4, 5, 6, 7, 8],
-    explanation: "The same heavy loop, but now it runs inside a worker. The main thread stays free!",
+    explanation: "Same big loop, but now it runs in a worker. Your page stays smooth!",
   },
   {
     lines: [10, 11, 12, 13],
-    explanation: "In main.js, we create the worker and listen for results. The UI stays responsive the whole time!",
+    explanation: "Create the worker and listen for the answer. Everything stays clickable!",
   },
 ]
 
@@ -58,9 +58,9 @@ export function HeavyLoopExample() {
   return (
     <div className="space-y-8">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Real Example: Heavy Loop</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Example: A Really Big Loop</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Compare what happens with and without a Web Worker.
+          See the difference between blocking your page and using a worker.
         </p>
       </motion.div>
 

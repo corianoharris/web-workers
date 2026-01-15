@@ -21,7 +21,7 @@ console.log('Message sent! UI is not blocked.');`
 const defaultWorkerCode = `// Worker code
 self.onmessage = (e) => {
   const { limit } = e.data;
-  
+
   // Find all prime numbers up to 'limit'
   function isPrime(n) {
     if (n < 2) return false;
@@ -30,12 +30,12 @@ self.onmessage = (e) => {
     }
     return true;
   }
-  
+
   let primeCount = 0;
   for (let i = 2; i <= limit; i++) {
     if (isPrime(i)) primeCount++;
   }
-  
+
   // Send back how many primes we found
   self.postMessage({ limit, primeCount });
 };`
@@ -77,7 +77,7 @@ self.onmessage = (e) => {
   console.log('Worker: Received message!');
   const { limit } = e.data;
   console.log('Worker: Finding primes up to', limit);
-  
+
   function isPrime(n) {
     if (n < 2) return false;
     for (let i = 2; i <= Math.sqrt(n); i++) {
@@ -85,12 +85,12 @@ self.onmessage = (e) => {
     }
     return true;
   }
-  
+
   let primeCount = 0;
   for (let i = 2; i <= limit; i++) {
     if (isPrime(i)) primeCount++;
   }
-  
+
   console.log('Worker: Done! Found', primeCount, 'primes');
   self.postMessage({ limit, primeCount });
 };`,
@@ -109,18 +109,18 @@ console.log('Calculating Fibonacci(40)...');`,
     worker: `// Worker: Fibonacci calculator
 self.onmessage = (e) => {
   const { type, n } = e.data;
-  
+
   if (type === 'fibonacci') {
     // Recursive Fibonacci (intentionally slow)
     function fib(num) {
       if (num <= 1) return num;
       return fib(num - 1) + fib(num - 2);
     }
-    
+
     const startTime = Date.now();
     const result = fib(n);
     const endTime = Date.now();
-    
+
     self.postMessage({
       type: 'fibonacci',
       input: n,
@@ -152,7 +152,7 @@ console.log('All tasks sent! Worker processes them in order.');`,
     worker: `// Worker: Handle multiple messages
 self.onmessage = (e) => {
   const { task, limit } = e.data;
-  
+
   function isPrime(n) {
     if (n < 2) return false;
     for (let i = 2; i <= Math.sqrt(n); i++) {
@@ -160,12 +160,12 @@ self.onmessage = (e) => {
     }
     return true;
   }
-  
+
   let primeCount = 0;
   for (let i = 2; i <= limit; i++) {
     if (isPrime(i)) primeCount++;
   }
-  
+
   // Send back which task completed
   self.postMessage({
     task: task,
@@ -337,7 +337,7 @@ export function Playground() {
               <Button
                 variant="outline"
                 size="sm"
-                className="justify-start text-xs h-auto py-2 px-3 text-left bg-transparent"
+                className="justify-start text-xs h-auto py-2 px-3 text-left bg-transparent hover:bg-primary/10 hover:text-primary hover:border-primary"
                 onClick={() => loadPreset("largeLimit")}
               >
                 <span className="text-primary mr-2">1.</span>
@@ -346,7 +346,7 @@ export function Playground() {
               <Button
                 variant="outline"
                 size="sm"
-                className="justify-start text-xs h-auto py-2 px-3 text-left bg-transparent"
+                className="justify-start text-xs h-auto py-2 px-3 text-left bg-transparent hover:bg-primary/10 hover:text-primary hover:border-primary"
                 onClick={() => loadPreset("moreLogging")}
               >
                 <span className="text-primary mr-2">2.</span>
@@ -355,7 +355,7 @@ export function Playground() {
               <Button
                 variant="outline"
                 size="sm"
-                className="justify-start text-xs h-auto py-2 px-3 text-left bg-transparent"
+                className="justify-start text-xs h-auto py-2 px-3 text-left bg-transparent hover:bg-primary/10 hover:text-primary hover:border-primary"
                 onClick={() => loadPreset("differentCalc")}
               >
                 <span className="text-primary mr-2">3.</span>
@@ -364,7 +364,7 @@ export function Playground() {
               <Button
                 variant="outline"
                 size="sm"
-                className="justify-start text-xs h-auto py-2 px-3 text-left bg-transparent"
+                className="justify-start text-xs h-auto py-2 px-3 text-left bg-transparent hover:bg-primary/10 hover:text-primary hover:border-primary"
                 onClick={() => loadPreset("multipleMessages")}
               >
                 <span className="text-primary mr-2">4.</span>

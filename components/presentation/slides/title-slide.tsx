@@ -42,7 +42,7 @@ export function TitleSlide() {
         transition={{ duration: 0.5, delay: 0.4 }}
         className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto text-pretty"
       >
-        Running Heavy Tasks Without Blocking Your UI
+        Keep your website fast, even when doing hard work
       </motion.p>
 
       <motion.div

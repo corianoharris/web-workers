@@ -24,25 +24,25 @@ import { ReviewSummary } from "./slides/review-summary"
 import { Playground } from "./slides/playground"
 import { useEffect, useCallback } from "react"
 
-// 1-10: Basics, 11: Real-world examples, 12-13: Demos, 14-15: Mechanics, 16: Advanced topics, 17-18: Review & Practice
+// Flow: Problem → Solution → Implementation → Examples → Deep Dive → Practice
 const slides = [
   TitleSlide, // 1
-  WhyWorkersExist, // 2
-  SingleThreaded, // 3
-  MainVsWorker, // 4
-  HowPostMessageWorks, // 5
-  CreatingWorker, // 6
-  SendingMessages, // 7
-  WorkerReceiving, // 8
-  WorkerSendingBack, // 9
-  HeavyLoopExample, // 10
-  RealWorldUseCases, // 11 - Interactive examples
-  CompaniesUsingWorkers, // 12 - NEW: Real companies and products
-  DemoMainThreadFreeze, // 13
-  DemoUsingWorker, // 14
-  CallStackAnimation, // 15
-  WorkerCallStackAnimation, // 16
-  WorkerTypesAndLimitations, // 17
+  WhyWorkersExist, // 2 - Introduction
+  SingleThreaded, // 3 - Understand the constraint
+  DemoMainThreadFreeze, // 4 - SHOW the problem (moved up)
+  MainVsWorker, // 5 - Introduce the solution
+  CompaniesUsingWorkers, // 6 - Real-world validation (moved up)
+  HowPostMessageWorks, // 7 - How they communicate
+  CreatingWorker, // 8 - Start implementation
+  SendingMessages, // 9
+  WorkerReceiving, // 10
+  WorkerSendingBack, // 11
+  HeavyLoopExample, // 12 - Code example
+  DemoUsingWorker, // 13 - SHOW the solution
+  RealWorldUseCases, // 14 - Interactive examples
+  CallStackAnimation, // 15 - Understand mechanics
+  WorkerCallStackAnimation, // 16 - Deep dive
+  WorkerTypesAndLimitations, // 17 - Advanced topics
   ReviewSummary, // 18
   Playground, // 19
 ]

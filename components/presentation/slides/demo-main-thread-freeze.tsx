@@ -59,10 +59,10 @@ export function DemoMainThreadFreeze() {
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
         <div className="flex items-center justify-center gap-2 text-destructive mb-4">
           <AlertTriangle className="h-6 w-6" />
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Live Demo: Main Thread Freezes</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Live Demo: See The Freeze</h2>
         </div>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Watch how a heavy task on the main thread freezes everything!
+          See what happens when you do too much work on the main thread. Spoiler: everything stops!
         </p>
       </motion.div>
 
@@ -74,9 +74,9 @@ export function DemoMainThreadFreeze() {
       >
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">Counter Animation</h3>
+            <h3 className="font-semibold text-foreground">Watch This Counter</h3>
             <p className="text-sm text-muted-foreground">
-              This counter should update every 100ms. Watch what happens when you run the heavy task!
+              This should count smoothly. But watch what happens when we do hard work...
             </p>
             <div className="text-6xl font-bold text-primary text-center py-8 bg-primary/10 rounded-xl">{counter}</div>
             <p className="text-xs text-muted-foreground text-center">
@@ -85,9 +85,9 @@ export function DemoMainThreadFreeze() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">Heavy Task Control</h3>
+            <h3 className="font-semibold text-foreground">Try It Yourself</h3>
             <p className="text-sm text-muted-foreground">
-              Click the button to run 500 million calculations on the main thread.
+              Click to start 500 million calculations. The page will freeze!
             </p>
             <div className="space-y-4">
               <Button
@@ -105,7 +105,7 @@ export function DemoMainThreadFreeze() {
                   </>
                 )}
               </Button>
-              <Button onClick={reset} variant="outline" className="w-full bg-transparent">
+              <Button onClick={reset} variant="outline" className="w-full bg-transparent hover:bg-primary/10 hover:text-primary hover:border-primary">
                 <RotateCcw className="h-4 w-4 mr-2" />
                 Reset
               </Button>

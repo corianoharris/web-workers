@@ -21,21 +21,21 @@ worker.terminate();
 const steps = [
   {
     lines: [1, 2],
-    explanation: "First, we create our worker as usual.",
+    explanation: "Create your worker like normal.",
   },
   {
     lines: [4, 5],
-    explanation: "The worker does its job, processing data we send.",
+    explanation: "The worker does its job with the data you send.",
   },
   {
     lines: [7, 8, 9, 10],
     explanation:
-      "When you don't need the worker anymore, call terminate(). This immediately stops the worker and frees up memory.",
+      "When done, call terminate(). This stops the worker right away and clears its memory.",
   },
   {
     lines: [12, 13],
     explanation:
-      "Alternatively, the worker can stop itself by calling self.close(). Useful when the worker knows it's done.",
+      "Or, the worker can stop itself using self.close(). Good when the worker knows it finished.",
   },
 ]
 
@@ -43,9 +43,9 @@ export function TerminatingWorker() {
   return (
     <div className="space-y-8">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Terminating a Worker</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Stopping a Worker</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Workers use memory. When you&apos;re done, clean them up!
+          Workers use memory and resources. Stop them when you're done!
         </p>
       </motion.div>
 

@@ -9,17 +9,17 @@ const slideNames = [
   "Title",
   "Why Web Workers Exist",
   "JavaScript Is Single-Threaded",
+  "Live Demo: Main Thread Freezes",
   "Main Thread vs Worker Thread",
+  "Who Actually Uses Web Workers?",
   "How postMessage Works",
   "Creating a Worker",
   "Sending Messages to the Worker",
   "Worker Receiving Messages",
   "Worker Sending Back Results",
   "Real Example: Heavy Loop",
-  "Real-World Use Cases",
-  "Who Actually Uses Web Workers?",
-  "Live Demo: Main Thread Freezes",
   "Live Demo: Using a Web Worker",
+  "Real-World Use Cases",
   "Interactive Call Stack Animation",
   "Worker Thread Deep Dive",
   "Worker Types & Limitations",
@@ -34,7 +34,7 @@ export function SlideNavigation() {
     <div className="fixed bottom-0 left-0 right-0 bg-card/80 backdrop-blur-sm border-t border-border">
       <div className="p-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Button variant="ghost" size="lg" onClick={prevSlide} disabled={currentSlide === 0} className="gap-2">
+          <Button variant="ghost" size="lg" onClick={prevSlide} disabled={currentSlide === 0} className="gap-2 hover:bg-primary/10 hover:text-primary">
             <ChevronLeft className="h-5 w-5" />
             <span className="hidden sm:inline">Previous</span>
           </Button>
@@ -42,7 +42,7 @@ export function SlideNavigation() {
           <div className="flex items-center gap-4">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm" className="gap-2 bg-transparent">
+                <Button variant="outline" size="sm" className="gap-2 bg-transparent hover:bg-primary/10 hover:text-primary hover:border-primary">
                   <Menu className="h-4 w-4" />
                   <span className="hidden sm:inline">
                     Slide {currentSlide + 1} of {totalSlides}
@@ -74,7 +74,7 @@ export function SlideNavigation() {
             size="lg"
             onClick={nextSlide}
             disabled={currentSlide === totalSlides - 1}
-            className="gap-2"
+            className="gap-2 hover:bg-primary/10 hover:text-primary"
           >
             <span className="hidden sm:inline">Next</span>
             <ChevronRight className="h-5 w-5" />

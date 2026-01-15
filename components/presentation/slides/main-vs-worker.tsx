@@ -9,7 +9,7 @@ export function MainVsWorker() {
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Main Thread vs Worker Thread</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Think of them as two separate workers that can work at the same time!
+          Two workers doing different jobs at the same time. Here's how they split the work:
         </p>
       </motion.div>
 

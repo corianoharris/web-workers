@@ -21,63 +21,63 @@ const companies: Company[] = [
     icon: Map,
     category: "Maps & Location",
     color: "text-red-500",
-    why: "Maps need to calculate routes, distances, and zoom levels constantly",
-    whatTheyDo: "Workers do all the math in the background so panning and zooming never freezes",
-    example: "When you drag the map around, workers calculate what tiles to show next",
+    why: "Maps need to calculate routes and distances fast",
+    whatTheyDo: "Workers do the math so you can pan and zoom smoothly",
+    example: "When you drag the map, workers figure out what to show next",
   },
   {
     name: "PDF.js",
     icon: FileText,
     category: "Documents & Editors",
     color: "text-orange-500",
-    why: "Reading PDFs is very CPU-heavy (loading fonts, images, and text)",
-    whatTheyDo: "Workers load and render PDF pages so scrolling stays smooth",
-    example: "Used by Firefox, Chrome, and VS Code to show PDFs without lag",
+    why: "Reading PDFs takes a lot of computer power",
+    whatTheyDo: "Workers load PDF pages so scrolling stays smooth",
+    example: "Firefox, Chrome, and VS Code all use this to show PDFs",
   },
   {
     name: "Figma",
     icon: Box,
     category: "Documents & Editors",
     color: "text-purple-500",
-    why: "Design tools need complex math for shapes, colors, and real-time collaboration",
-    whatTheyDo: "Workers handle the heavy calculations so the canvas never stutters",
-    example: "When you move objects, workers calculate positions while you keep designing",
+    why: "Design tools need lots of math for shapes and colors",
+    whatTheyDo: "Workers do the calculations so your canvas never stutters",
+    example: "When you move things, workers figure out the math behind the scenes",
   },
   {
     name: "Monaco Editor",
     icon: Code,
     category: "Documents & Editors",
     color: "text-blue-500",
-    why: "Code editors need syntax highlighting, error checking, and autocomplete",
-    whatTheyDo: "Workers run the language tools so typing stays instant",
-    example: "This is the editor inside VS Code - workers check your TypeScript code",
+    why: "Code editors need to check your code as you type",
+    whatTheyDo: "Workers check for errors so typing stays fast",
+    example: "This is VS Code's editor — workers check your code in real-time",
   },
   {
     name: "TensorFlow.js",
     icon: Brain,
     category: "Machine Learning",
     color: "text-green-500",
-    why: "Running AI models (like face detection) is extremely CPU-heavy",
-    whatTheyDo: "Workers run the ML calculations in the background",
-    example: "Detects poses or classifies images without freezing your website",
+    why: "Running AI models takes serious computing power",
+    whatTheyDo: "Workers run AI in the background",
+    example: "Detects faces or recognizes images without freezing your page",
   },
   {
     name: "Three.js",
     icon: Cog,
     category: "3D & Graphics",
     color: "text-cyan-500",
-    why: "3D physics and geometry calculations are very expensive",
-    whatTheyDo: "Workers compute physics and mesh data while the main thread renders graphics",
-    example: "Games and 3D visualizations use workers for smooth animation",
+    why: "3D physics needs tons of math",
+    whatTheyDo: "Workers do physics math while the main thread shows graphics",
+    example: "Games and 3D websites use workers for smooth animation",
   },
   {
     name: "Mapbox",
     icon: Map,
     category: "Maps & Location",
     color: "text-teal-500",
-    why: "Map tiles and location data need to be decoded quickly",
-    whatTheyDo: "A pool of workers processes all map data off the main thread",
-    example: "Interactive maps that never lag, even with complex data layers",
+    why: "Map data needs to load and display quickly",
+    whatTheyDo: "Multiple workers process map data at the same time",
+    example: "Maps that stay smooth even with lots of information",
   },
 ]
 
@@ -99,9 +99,9 @@ export function CompaniesUsingWorkers() {
   return (
     <div className="space-y-6">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Who Actually Uses Web Workers?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Real Companies Using Workers</h2>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-          These aren't toy examples — these are major products used by millions of people every day
+          These are real products millions of people use every day
         </p>
       </motion.div>
 
@@ -134,7 +134,7 @@ export function CompaniesUsingWorkers() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="grid md:grid-cols-2 gap-4 max-h-[500px] overflow-y-auto pr-2"
+        className="grid md:grid-cols-2 gap-4 max-h-[500px] overflow-y-auto pr-2 p-1"
       >
         {filteredCompanies.map((company, index) => {
           const Icon = company.icon

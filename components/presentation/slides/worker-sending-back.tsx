@@ -6,10 +6,10 @@ import { CodeStepper } from "../code-stepper"
 const codeWorker = `// Inside worker.js
 self.onmessage = (event) => {
   const { value } = event.data;
-  
+
   // Do some heavy calculation
   const result = value * 1000;
-  
+
   // Send the result back TO the main thread
   self.postMessage({
     type: 'DONE',
@@ -20,7 +20,7 @@ self.onmessage = (event) => {
 const codeMain = `// Back in main.js - listen for worker's response
 worker.onmessage = (event) => {
   const { type, result } = event.data;
-  
+
   if (type === 'DONE') {
     console.log('Got result from worker:', result);
     // Now you can update the UI!
@@ -31,22 +31,22 @@ worker.onmessage = (event) => {
 const stepsWorker = [
   {
     lines: [1, 2, 3],
-    explanation: "First, the worker receives data from the main thread.",
+    explanation: "First, the worker gets information from your page.",
   },
   {
     lines: [5, 6],
-    explanation: "The worker does some calculation. In real apps, this could be a complex algorithm that takes time.",
+    explanation: "The worker does its job. In real apps, this could be complex work that takes time.",
   },
   {
     lines: [8, 9, 10, 11, 12],
-    explanation: "When done, the worker sends the result back using self.postMessage(). This goes TO the main thread!",
+    explanation: "When finished, send the answer back using self.postMessage(). This goes back to your page!",
   },
 ]
 
 const stepsMain = [
   {
     lines: [1, 2],
-    explanation: "In your main code, set up worker.onmessage to listen for messages FROM the worker.",
+    explanation: "On your main page, use worker.onmessage to listen for answers from the worker.",
   },
   {
     lines: [3, 4],

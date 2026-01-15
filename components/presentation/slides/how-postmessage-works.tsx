@@ -9,29 +9,50 @@ export function HowPostMessageWorks() {
   const [isAnimating, setIsAnimating] = useState(true)
   const [messagePosition, setMessagePosition] = useState(0)
   const [direction, setDirection] = useState<"toWorker" | "toMain">("toWorker")
+  const [isPaused, setIsPaused] = useState(false)
 
   useEffect(() => {
-    if (!isAnimating) return
+    if (!isAnimating || isPaused) return
 
     const interval = setInterval(() => {
-      setMessagePosition((prev) => {
-        if (prev >= 100) {
-          setDirection((d) => (d === "toWorker" ? "toMain" : "toWorker"))
-          return 0
-        }
-        return prev + 2
-      })
+      if (direction === "toWorker") {
+        // Moving right (0 to 100)
+        setMessagePosition((prev) => {
+          if (prev >= 100) {
+            setIsPaused(true)
+            setTimeout(() => {
+              setDirection("toMain")
+              setIsPaused(false)
+            }, 3000)
+            return 100
+          }
+          return prev + 2
+        })
+      } else {
+        // Moving left (100 to 0)
+        setMessagePosition((prev) => {
+          if (prev <= 0) {
+            setIsPaused(true)
+            setTimeout(() => {
+              setDirection("toWorker")
+              setIsPaused(false)
+            }, 3000)
+            return 0
+          }
+          return prev - 2
+        })
+      }
     }, 100)
 
     return () => clearInterval(interval)
-  }, [isAnimating])
+  }, [isAnimating, isPaused, direction])
 
   return (
     <div className="space-y-8">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">How postMessage Works</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">How Messages Travel</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          The main thread and workers communicate by sending messages back and forth.
+          Your page and workers talk by sending messages back and forth.
         </p>
       </motion.div>
 
@@ -42,23 +63,47 @@ export function HowPostMessageWorks() {
         className="relative p-8 rounded-xl bg-card border border-border"
       >
         <div className="flex justify-between items-center">
-          <div className="w-32 h-32 rounded-xl bg-primary/20 border-2 border-primary flex items-center justify-center">
+          <motion.div
+            className="rounded-xl bg-primary/20 border-2 border-primary flex items-center justify-center transition-all"
+            animate={{
+              width: direction === "toMain" && messagePosition < 20 ? "200px" : "128px",
+              height: direction === "toMain" && messagePosition < 20 ? "200px" : "128px"
+            }}
+            transition={{ duration: 0.3 }}
+          >
             <div className="text-center">
               <p className="font-bold text-primary">Main</p>
               <p className="text-xs text-muted-foreground">Thread</p>
+              {direction === "toMain" && messagePosition < 20 && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="mt-3 text-xs bg-blue-500/20 border border-blue-500 rounded px-2 py-1"
+                >
+                  <p className="text-blue-600 font-semibold">Result received!</p>
+                </motion.div>
+              )}
             </div>
-          </div>
+          </motion.div>
 
           <div className="flex-1 mx-8 relative">
             <div className="h-2 bg-secondary rounded-full" />
             <motion.div
-              className={`absolute top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
-                direction === "toWorker" ? "bg-accent text-accent-foreground" : "bg-primary text-primary-foreground"
-              }`}
+              key={direction}
+              className="absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-2xl shadow-lg border-2"
+              initial={{
+                backgroundColor: direction === "toWorker" ? "#fbbf24" : "#3b82f6",
+                borderColor: direction === "toWorker" ? "#f59e0b" : "#2563eb",
+              }}
+              animate={{
+                backgroundColor: direction === "toWorker" ? "#fbbf24" : "#3b82f6",
+                borderColor: direction === "toWorker" ? "#f59e0b" : "#2563eb",
+              }}
               style={{
-                left: direction === "toWorker" ? `${messagePosition}%` : `${100 - messagePosition}%`,
+                left: `${messagePosition}%`,
                 transform: "translate(-50%, -50%)",
               }}
+              transition={{ duration: 0.3 }}
             >
               📨
             </motion.div>
@@ -68,21 +113,42 @@ export function HowPostMessageWorks() {
             </div>
           </div>
 
-          <div className="w-32 h-32 rounded-xl bg-chart-5/20 border-2 border-chart-5 flex items-center justify-center">
+          <motion.div
+            className="rounded-xl bg-chart-5/20 border-2 border-chart-5 flex items-center justify-center transition-all"
+            animate={{
+              width: direction === "toWorker" && messagePosition > 80 ? "200px" : "128px",
+              height: direction === "toWorker" && messagePosition > 80 ? "200px" : "128px"
+            }}
+            transition={{ duration: 0.3 }}
+          >
             <div className="text-center">
               <p className="font-bold text-chart-5">Worker</p>
               <p className="text-xs text-muted-foreground">Thread</p>
+              {direction === "toWorker" && messagePosition > 80 && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="mt-3 text-xs bg-yellow-500/20 border border-yellow-500 rounded px-2 py-1"
+                >
+                  <p className="text-yellow-600 font-semibold">Processing...</p>
+                </motion.div>
+              )}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="text-center mt-6">
           <p className="text-sm text-muted-foreground mb-2">
             {direction === "toWorker"
-              ? "Main thread sending data to worker (yellow)..."
-              : "Worker sending modified result back (blue)..."}
+              ? "Main thread sending data to worker (yellow message)..."
+              : "Worker sending result back (blue message)..."}
           </p>
-          <Button variant="outline" size="sm" onClick={() => setIsAnimating(!isAnimating)}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsAnimating(!isAnimating)}
+            className="hover:bg-primary/10 hover:text-primary hover:border-primary"
+          >
             {isAnimating ? <Pause className="h-4 w-4 mr-2" /> : <Play className="h-4 w-4 mr-2" />}
             {isAnimating ? "Pause" : "Play"}
           </Button>

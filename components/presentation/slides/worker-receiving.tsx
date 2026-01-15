@@ -7,9 +7,9 @@ const code = `// Worker receives data FROM the main thread
 self.onmessage = (event) => {
   // event.data contains what was sent
   const { type, value } = event.data;
-  
+
   console.log('Worker received:', type, value);
-  
+
   // Now do something with the data!
   if (type === 'START') {
     // Start the heavy calculation
@@ -21,22 +21,22 @@ const steps = [
   {
     lines: [1, 2],
     explanation:
-      "Inside your worker file, you set up a listener using self.onmessage. This function runs whenever the main thread sends a message.",
+      "In your worker file, use self.onmessage to listen. This runs every time the main page sends something.",
   },
   {
     lines: [3, 4],
     explanation:
-      "The 'event' parameter contains a 'data' property - this is exactly what postMessage() sent. We can destructure it to get our values.",
+      "The 'event' has a 'data' property - that's what was sent. We can pull out the values we need.",
   },
   {
     lines: [6],
     explanation:
-      "console.log works in workers too! Great for debugging. Check your browser's dev tools to see worker logs.",
+      "console.log works in workers! Great for checking what you received. Look in your browser's developer tools.",
   },
   {
     lines: [8, 9, 10, 11],
     explanation:
-      "Now we can use the received data. Here we check if the message type is 'START' and then begin our heavy calculation.",
+      "Now use the information. Here we check if the type is 'START' and then start working.",
   },
 ]
 
@@ -44,10 +44,10 @@ export function WorkerReceiving() {
   return (
     <div className="space-y-8">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Worker Receiving Messages</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Worker Receives Your Message</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Inside the worker file, we listen for messages using{" "}
-          <code className="bg-secondary px-2 py-1 rounded">self.onmessage</code>.
+          Inside the worker, use{" "}
+          <code className="bg-secondary px-2 py-1 rounded">self.onmessage</code> to listen for messages.
         </p>
       </motion.div>
 

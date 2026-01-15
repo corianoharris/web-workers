@@ -413,18 +413,18 @@ export function CallStackAnimation() {
           </motion.div>
 
           <div className="mt-6 flex items-center justify-center gap-3 flex-wrap">
-            <Button variant="outline" size="sm" onClick={prev} disabled={currentStep === 0}>
+            <Button variant="outline" size="sm" onClick={prev} disabled={currentStep === 0} className="hover:bg-primary/10 hover:text-primary hover:border-primary">
               <ChevronLeft className="h-4 w-4 mr-1" />
               Back
             </Button>
-            <Button variant="outline" size="sm" onClick={reset}>
+            <Button variant="outline" size="sm" onClick={reset} className="hover:bg-primary/10 hover:text-primary hover:border-primary">
               <RotateCcw className="h-4 w-4 mr-1" />
               Reset
             </Button>
             <span className="text-sm text-muted-foreground px-2">
               Step {currentStep + 1} of {animationSteps.length}
             </span>
-            <Button variant="outline" size="sm" onClick={next} disabled={currentStep === animationSteps.length - 1}>
+            <Button variant="outline" size="sm" onClick={next} disabled={currentStep === animationSteps.length - 1} className="hover:bg-primary/10 hover:text-primary hover:border-primary">
               Forward
               <ChevronRight className="h-4 w-4 ml-1" />
             </Button>

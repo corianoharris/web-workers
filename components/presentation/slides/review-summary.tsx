@@ -6,26 +6,26 @@ import { CheckCircle2, Cpu, MessageSquare, Zap } from "lucide-react"
 const concepts = [
   {
     icon: Cpu,
-    title: "Single-Threaded Problem",
-    description: "JavaScript runs one task at a time. Heavy work blocks everything.",
+    title: "The Problem",
+    description: "JavaScript does one thing at a time. Heavy work freezes your page.",
     color: "text-destructive",
   },
   {
     icon: Zap,
-    title: "Web Workers Solution",
-    description: "Workers run code in a separate thread, keeping your UI responsive.",
+    title: "The Solution",
+    description: "Workers do hard work separately. Your page stays smooth.",
     color: "text-primary",
   },
   {
     icon: MessageSquare,
-    title: "postMessage Communication",
-    description: "Main thread and workers talk by sending messages back and forth.",
+    title: "How They Talk",
+    description: "They send messages back and forth using postMessage.",
     color: "text-accent",
   },
   {
     icon: CheckCircle2,
-    title: "Best Practices",
-    description: "Create workers for heavy tasks, terminate when done, use messages for data.",
+    title: "Remember This",
+    description: "Use workers for heavy tasks. Clean them up when you're done.",
     color: "text-chart-5",
   },
 ]
@@ -43,9 +43,9 @@ export function ReviewSummary() {
   return (
     <div className="space-y-8">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Review Summary</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What You Just Learned</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Let&apos;s recap everything you learned about Web Workers!
+          Here are the key ideas. You got this!
         </p>
       </motion.div>
 
@@ -78,7 +78,7 @@ export function ReviewSummary() {
         <h3 className="font-semibold text-foreground mb-4 text-center">Quick Reference Code</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {codeSnippets.map((snippet, index) => (
-            <div key={index} className="p-3 rounded-lg bg-secondary">
+            <div key={index} className="p-3 rounded-lg bg-secondary hover:bg-primary/10 hover:border hover:border-primary transition-all cursor-pointer">
               <p className="text-xs text-muted-foreground mb-1">{snippet.label}</p>
               <code className="text-sm font-mono text-primary">{snippet.code}</code>
             </div>
@@ -93,8 +93,7 @@ export function ReviewSummary() {
         className="p-4 rounded-xl bg-primary/10 border border-primary/30 text-center"
       >
         <p className="text-foreground">
-          <span className="font-bold text-primary">Great job!</span> You now understand the basics of Web Workers. Head
-          to the next slide to try coding your own!
+          <span className="font-bold text-primary">You did it!</span> You now know how to keep websites fast using Web Workers. Ready to build something?
         </p>
       </motion.div>
     </div>

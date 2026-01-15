@@ -5,11 +5,11 @@ import { Cpu, ImageIcon, Lock, FileCode } from "lucide-react"
 
 export function WhyWorkersExist() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 max-h-[calc(100vh-200px)] overflow-y-auto pr-4">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Why Web Workers Exist</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Web Workers let you run <span className="font-semibold text-primary">JavaScript in the background so long tasks do not block the UI</span> — especially CPU-heavy work or anything that needs parallel processing.
+          Web Workers let you <span className="font-semibold text-primary">do hard work in the background</span> while keeping your page smooth and responsive.
         </p>
       </motion.div>
 
@@ -17,7 +17,7 @@ export function WhyWorkersExist() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="grid md:grid-cols-2 gap-6"
+        className="max-w-2xl mx-auto"
       >
         <div className="p-6 rounded-xl bg-card border border-border">
           <h3 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
@@ -25,22 +25,19 @@ export function WhyWorkersExist() {
             What&apos;s a Thread?
           </h3>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            A <span className="font-semibold text-foreground">thread</span> is like a worker in a restaurant kitchen.
-            Your browser normally has one main thread (chef) doing everything. Web Workers add extra threads (sous
-            chefs) that can work in parallel.
+            A <span className="font-semibold text-foreground">thread</span> is like one person doing a job.
+            Your browser usually has just one person (the main thread) doing everything. Web Workers add more people
+            so they can all work at the same time.
           </p>
-        </div>
-
-        <div className="p-6 rounded-xl bg-card border border-border">
-          <h3 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
-            <FileCode className="h-5 w-5 text-primary" />
-            What&apos;s &quot;Background&quot;?
-          </h3>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            <span className="font-semibold text-foreground">Background</span> means running code in a separate thread
-            that doesn&apos;t block the main UI thread. Your page stays responsive while the worker does heavy lifting
-            behind the scenes.
+          <p className="text-muted-foreground text-sm leading-relaxed mt-3">
+            <span className="font-semibold text-foreground">This thread handles:</span>
           </p>
+          <ul className="mt-2 space-y-1 text-muted-foreground text-sm">
+            <li>• Clicking buttons</li>
+            <li>• Typing text</li>
+            <li>• Animations</li>
+            <li>• Running JavaScript code</li>
+          </ul>
         </div>
       </motion.div>
 

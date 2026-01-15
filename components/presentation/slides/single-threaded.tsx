@@ -30,10 +30,10 @@ export function SingleThreaded() {
   return (
     <div className="space-y-8">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">JavaScript Is Single-Threaded</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">JavaScript Does One Thing at a Time</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          JavaScript can only do <span className="font-semibold text-primary">one thing at a time</span>. Tasks run one
-          after another, like a single checkout line at a store.
+          JavaScript can only do <span className="font-semibold text-primary">one thing at a time</span>. Tasks happen one
+          after another, like waiting in a single checkout line.
         </p>
       </motion.div>
 

@@ -21,7 +21,7 @@ const useCases: UseCase[] = [
   {
     icon: ImageIcon,
     title: "Image Processing",
-    description: "Apply filters, resize, or compress images without freezing the UI",
+    description: "Edit, resize, or compress images without slowing down your page",
     color: "text-blue-500",
     steps: [
       { action: "User uploads image", inWorker: false, duration: 500 },
@@ -36,7 +36,7 @@ const useCases: UseCase[] = [
   {
     icon: Lock,
     title: "Encryption / Decryption",
-    description: "Secure data processing without blocking user interactions",
+    description: "Keep data secure without making users wait",
     color: "text-green-500",
     steps: [
       { action: "User enters password", inWorker: false, duration: 500 },
@@ -51,7 +51,7 @@ const useCases: UseCase[] = [
   {
     icon: Database,
     title: "Data Processing",
-    description: "Sort, filter, or analyze large datasets without lag",
+    description: "Sort, filter, or analyze big data sets instantly",
     color: "text-purple-500",
     steps: [
       { action: "Load CSV data", inWorker: false, duration: 500 },
@@ -119,9 +119,9 @@ export function RealWorldUseCases() {
   return (
     <div className="space-y-6">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Real-World Use Cases</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">When To Use Workers</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          See how Web Workers handle CPU-intensive tasks while keeping the UI responsive
+          Here are real examples where workers keep everything smooth
         </p>
       </motion.div>
 
@@ -234,10 +234,10 @@ export function RealWorldUseCases() {
 
         {/* Controls */}
         <div className="flex items-center justify-center gap-2">
-          <Button variant="outline" size="sm" onClick={handlePrev} disabled={currentStep === 0 || isPlaying}>
+          <Button variant="outline" size="sm" onClick={handlePrev} disabled={currentStep === 0 || isPlaying} className="hover:bg-primary/10 hover:text-primary hover:border-primary">
             Previous
           </Button>
-          <Button variant="outline" size="sm" onClick={() => setIsPlaying(!isPlaying)}>
+          <Button variant="outline" size="sm" onClick={() => setIsPlaying(!isPlaying)} className="hover:bg-primary/10 hover:text-primary hover:border-primary">
             {isPlaying ? <Pause className="h-4 w-4 mr-2" /> : <Play className="h-4 w-4 mr-2" />}
             {isPlaying ? "Pause" : "Auto-Play"}
           </Button>
@@ -246,10 +246,11 @@ export function RealWorldUseCases() {
             size="sm"
             onClick={handleNext}
             disabled={currentStep === currentUseCase.steps.length - 1 || isPlaying}
+            className="hover:bg-primary/10 hover:text-primary hover:border-primary"
           >
             Next
           </Button>
-          <Button variant="outline" size="sm" onClick={handleReset}>
+          <Button variant="outline" size="sm" onClick={handleReset} className="hover:bg-primary/10 hover:text-primary hover:border-primary">
             <RotateCcw className="h-4 w-4 mr-2" />
             Reset
           </Button>
