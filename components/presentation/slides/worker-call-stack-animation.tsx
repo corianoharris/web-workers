@@ -123,7 +123,7 @@ const animationSteps: AnimationStep[] = [
     workerStack: [
       { id: "w1", name: "self.onmessage()", color: "bg-chart-5" },
       { id: "w2", name: "processData()", color: "bg-chart-4" },
-      { id: "w3", name: "heavyCalculation()", color: "bg-destructive" },
+      { id: "w3", name: "heavyCalculation()", color: "bg-chart-4" },
     ],
     workerMicrotasks: [],
     workerMacrotasks: [],
@@ -138,7 +138,7 @@ const animationSteps: AnimationStep[] = [
     workerStack: [
       { id: "w1", name: "self.onmessage()", color: "bg-chart-5" },
       { id: "w2", name: "processData()", color: "bg-chart-4" },
-      { id: "w3", name: "heavyCalculation()", color: "bg-destructive" },
+      { id: "w3", name: "heavyCalculation()", color: "bg-chart-4" },
     ],
     workerMicrotasks: ["Promise.resolve()"],
     workerMacrotasks: [],
@@ -589,6 +589,27 @@ export function WorkerCallStackAnimation() {
                 </TooltipContent>
               </Tooltip>
             </div>
+          </div>
+
+          {/* Web Browser API Reference */}
+          <div className="mt-4 p-3 rounded-xl bg-muted/50 border border-border">
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest text-center mb-2">Web Browser API — Available in Both Threads</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {[
+                { api: "fetch / XHR", context: "Main + Worker", color: "text-chart-3" },
+                { api: "setTimeout", context: "Main + Worker", color: "text-accent" },
+                { api: "postMessage", context: "Main + Worker", color: "text-chart-5" },
+                { api: "DOM / window", context: "Main only", color: "text-chart-4" },
+              ].map((item) => (
+                <div key={item.api} className="p-2 rounded-lg bg-background border border-border text-center">
+                  <p className="text-xs font-mono text-foreground">{item.api}</p>
+                  <p className={`text-[10px] font-semibold mt-1 ${item.color}`}>{item.context}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-[11px] text-center text-muted-foreground mt-2">
+              Workers can use most browser APIs — but cannot access the DOM or window object
+            </p>
           </div>
 
           {/* Description */}

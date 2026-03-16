@@ -6,25 +6,28 @@ import { ChevronLeft, ChevronRight, Menu } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 const slideNames = [
-  "Title",
-  "Why Web Workers Exist",
-  "JavaScript Is Single-Threaded",
-  "Live Demo: Main Thread Freezes",
-  "Main Thread vs Worker Thread",
-  "Who Actually Uses Web Workers?",
-  "How postMessage Works",
-  "Creating a Worker",
-  "Sending Messages to the Worker",
-  "Worker Receiving Messages",
-  "Worker Sending Back Results",
-  "Real Example: Heavy Loop",
-  "Live Demo: Using a Web Worker",
-  "Real-World Use Cases",
-  "Interactive Call Stack Animation",
-  "Worker Thread Deep Dive",
-  "Worker Types & Limitations",
-  "Review Summary",
-  "Try It Yourself Playground",
+  // Act 1 — Hook
+  "Web Workers: Keeping the Browser Responsive", //  1
+  "A Frozen Button — The Trust Leak",            //  2
+  "The Browser at the Counter",                  //  3
+  // Act 2 — Root Cause
+  "One Task at a Time",                          //  4
+  "The Call Stack — Visual Proof",               //  5
+  // Act 3 — Solution
+  "Threads — The Solution Exists",               //  6
+  "postMessage & onmessage — Animated",          //  7
+  "Browser API — How Workers Are Created",       //  8
+  // Act 4 — Participation + Story
+  "Become the Browser! (Roles + Props)",         //  9
+  "User Gives a Task",                           // 10
+  "Worker Receives the Task",                    // 11
+  "Worker Sends the Result Back",                // 12
+  // Act 6 — Proof
+  "Real Products Using Workers",                 // 13
+  // Act 7 — Practice
+  "Group Coding in CodePen",                     // 14
+  // Act 8 — Close
+  "Closing Lesson — Thank You",                  // 15
 ]
 
 export function SlideNavigation() {

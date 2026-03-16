@@ -88,13 +88,13 @@ export function HowPostMessageWorks() {
             <div className="text-center">
               <p className="font-bold text-primary">Main</p>
               <p className="text-xs text-muted-foreground">Thread</p>
-              {direction === "toMain" && messagePosition < 20 && (
+              {isPaused && direction === "toMain" && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="mt-3 text-xs bg-blue-500/20 border border-blue-500 rounded px-2 py-1"
+                  className="mt-3 text-xs bg-blue-600 rounded px-2 py-1.5"
                 >
-                  <p className="text-blue-600 font-semibold">Result received!</p>
+                  <p className="text-white font-bold">Result Received!</p>
                 </motion.div>
               )}
             </div>
@@ -104,7 +104,7 @@ export function HowPostMessageWorks() {
             <div className="h-2 bg-secondary rounded-full" />
             <motion.div
               key={direction}
-              className="absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-2xl shadow-lg border-2"
+              className="absolute top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center shadow-lg border-2 px-3 py-1.5 whitespace-nowrap"
               initial={{
                 backgroundColor: direction === "toWorker" ? "#fbbf24" : "#3b82f6",
                 borderColor: direction === "toWorker" ? "#f59e0b" : "#2563eb",
@@ -119,12 +119,11 @@ export function HowPostMessageWorks() {
               }}
               transition={{ duration: 0.3 }}
             >
-              📨
+              <span className={`text-xs font-bold drop-shadow ${direction === "toWorker" ? "text-black" : "text-white"}`}>
+                {direction === "toWorker" ? "postMessage()" : "onmessage()"}
+              </span>
             </motion.div>
-            <div className="flex justify-between mt-2 text-xs text-muted-foreground">
-              <span>postMessage()</span>
-              <span>onmessage</span>
-            </div>
+
           </div>
 
           <motion.div
@@ -138,13 +137,13 @@ export function HowPostMessageWorks() {
             <div className="text-center">
               <p className="font-bold text-chart-5">Worker</p>
               <p className="text-xs text-muted-foreground">Thread</p>
-              {direction === "toWorker" && messagePosition > 80 && (
+              {isPaused && direction === "toWorker" && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="mt-3 text-xs bg-yellow-500/20 border border-yellow-500 rounded px-2 py-1"
+                  className="mt-3 text-xs bg-yellow-500 rounded px-2 py-1.5"
                 >
-                  <p className="text-yellow-600 font-semibold">Processing...</p>
+                  <p className="text-yellow-950 font-bold">Processing data...</p>
                 </motion.div>
               )}
             </div>

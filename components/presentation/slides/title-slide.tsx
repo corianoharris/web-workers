@@ -39,10 +39,19 @@ export function TitleSlide() {
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto text-pretty"
+        transition={{ duration: 0.5, delay: 0.35 }}
+        className="text-2xl md:text-3xl font-semibold text-primary"
       >
-        Keep your website fast, even when doing hard work
+        Keeping the Browser Responsive
+      </motion.p>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty"
+      >
+        A storytelling guide for UX/UI designers and developers.
       </motion.p>
 
       <motion.div
@@ -52,7 +61,7 @@ export function TitleSlide() {
         className="pt-4"
       >
         <div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm">
-          Interactive Learning Module
+          Storytelling · Live Demo · Audience Participation
         </div>
       </motion.div>
 

@@ -14,7 +14,7 @@ const PresentationContext = createContext<PresentationContextType | undefined>(u
 
 export function PresentationProvider({ children }: { children: ReactNode }) {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const totalSlides = 19 // Updated total slides from 18 to 19 to include new "Companies Using Workers" slide
+  const totalSlides = 15
 
   const nextSlide = () => {
     setCurrentSlide((prev) => Math.min(prev + 1, totalSlides - 1))

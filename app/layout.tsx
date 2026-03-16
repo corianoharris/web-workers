@@ -8,8 +8,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Web Workers: Interactive Learning Module",
-  description: "Learn how JavaScript avoids freezing the browser with Web Workers",
-    generator: 'v0.app'
+  description: "Learn how JavaScript avoids freezing the browser with Web Workers"
 }
 
 export default function RootLayout({

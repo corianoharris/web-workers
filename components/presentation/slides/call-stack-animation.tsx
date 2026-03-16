@@ -74,7 +74,7 @@ const animationSteps: AnimationStep[] = [
     mainStack: [],
     workerStack: [
       { id: "3", name: "onmessage()", color: "bg-chart-5" },
-      { id: "4", name: "heavyLoop()", color: "bg-destructive" },
+      { id: "4", name: "heavyLoop()", color: "bg-chart-4" },
     ],
     microtaskQueue: [],
     macrotaskQueue: [],
@@ -85,7 +85,7 @@ const animationSteps: AnimationStep[] = [
     mainStack: [{ id: "5", name: "handleClick()", color: "bg-primary" }],
     workerStack: [
       { id: "3", name: "onmessage()", color: "bg-chart-5" },
-      { id: "4", name: "heavyLoop()", color: "bg-destructive" },
+      { id: "4", name: "heavyLoop()", color: "bg-chart-4" },
     ],
     microtaskQueue: [],
     macrotaskQueue: ["setTimeout callback"],
@@ -401,6 +401,27 @@ export function CallStackAnimation() {
                 )}
               </div>
             </div>
+          </div>
+
+          {/* Web Browser API Reference */}
+          <div className="mt-6 p-4 rounded-xl bg-muted/50 border border-border">
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest text-center mb-3">Web Browser API — Bridges JS to the Queue</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {[
+                { api: "setTimeout / setInterval", queue: "→ Macrotask", color: "text-accent" },
+                { api: "fetch / XHR", queue: "→ Microtask (Promise)", color: "text-chart-3" },
+                { api: "DOM Events", queue: "→ Macrotask", color: "text-accent" },
+                { api: "postMessage", queue: "→ Macrotask", color: "text-chart-5" },
+              ].map((item) => (
+                <div key={item.api} className="p-2 rounded-lg bg-background border border-border text-center">
+                  <p className="text-xs font-mono text-foreground">{item.api}</p>
+                  <p className={`text-[10px] font-semibold mt-1 ${item.color}`}>{item.queue}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-[11px] text-center text-muted-foreground mt-2">
+              Browser APIs execute outside the JS engine — they deposit callbacks into the appropriate queue when done
+            </p>
           </div>
 
           <motion.div

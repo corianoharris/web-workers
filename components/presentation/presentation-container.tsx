@@ -3,48 +3,62 @@
 import { usePresentation } from "./presentation-context"
 import { SlideNavigation } from "./slide-navigation"
 import { SlideProgress } from "./slide-progress"
+
 import { TitleSlide } from "./slides/title-slide"
-import { WhyWorkersExist } from "./slides/why-workers-exist"
+import { BrowserAtTheCounter } from "./slides/browser-at-the-counter"
+import { FrozenButton } from "./slides/frozen-button"
 import { SingleThreaded } from "./slides/single-threaded"
-import { MainVsWorker } from "./slides/main-vs-worker"
+import { CallStackAnimation } from "./slides/call-stack-animation"
+import { WhyWorkersExist } from "./slides/why-workers-exist"
+import { BrowserApiScene } from "./slides/browser-api-scene"
 import { HowPostMessageWorks } from "./slides/how-postmessage-works"
-import { CreatingWorker } from "./slides/creating-worker"
-import { SendingMessages } from "./slides/sending-messages"
+import { WorkerCallStackAnimation } from "./slides/worker-call-stack-animation"
+import { AudienceParticipation } from "./slides/audience-participation"
+import { UserAction } from "./slides/user-action"
+import { OffloadViaBrowserApi } from "./slides/offload-via-browser-api"
 import { WorkerReceiving } from "./slides/worker-receiving"
 import { WorkerSendingBack } from "./slides/worker-sending-back"
-import { HeavyLoopExample } from "./slides/heavy-loop-example"
-import { RealWorldUseCases } from "./slides/real-world-use-cases"
+import { UpdateDom } from "./slides/update-dom"
 import { CompaniesUsingWorkers } from "./slides/companies-using-workers"
-import { DemoMainThreadFreeze } from "./slides/demo-main-thread-freeze"
 import { DemoUsingWorker } from "./slides/demo-using-worker"
-import { CallStackAnimation } from "./slides/call-stack-animation"
-import { WorkerCallStackAnimation } from "./slides/worker-call-stack-animation"
-import { WorkerTypesAndLimitations } from "./slides/worker-types-and-limitations"
-import { ReviewSummary } from "./slides/review-summary"
-import { Playground } from "./slides/playground"
+import { CodepenGroupCoding } from "./slides/codepen-group-coding"
+import { ClosingSlide } from "./slides/closing-slide"
+
 import { useEffect, useCallback } from "react"
 
-// Flow: Problem → Solution → Implementation → Examples → Deep Dive → Practice
+// 16 slides — storytelling arc
 const slides = [
-  TitleSlide, // 1
-  WhyWorkersExist, // 2 - Introduction
-  SingleThreaded, // 3 - Understand the constraint
-  DemoMainThreadFreeze, // 4 - SHOW the problem (moved up)
-  MainVsWorker, // 5 - Introduce the solution
-  CompaniesUsingWorkers, // 6 - Real-world validation (moved up)
-  HowPostMessageWorks, // 7 - How they communicate
-  CreatingWorker, // 8 - Start implementation
-  SendingMessages, // 9
-  WorkerReceiving, // 10
-  WorkerSendingBack, // 11
-  HeavyLoopExample, // 12 - Code example
-  DemoUsingWorker, // 13 - SHOW the solution
-  RealWorldUseCases, // 14 - Interactive examples
-  CallStackAnimation, // 15 - Understand mechanics
-  WorkerCallStackAnimation, // 16 - Deep dive
-  WorkerTypesAndLimitations, // 17 - Advanced topics
-  ReviewSummary, // 18
-  Playground, // 19
+  // ACT 1 — HOOK: Start with the human pain, then explain the world
+  TitleSlide,               //  1 — Set the stage
+  FrozenButton,             //  2 — Emotional hook: you click, nothing happens
+  BrowserAtTheCounter,      //  3 — Why it happens: the browser is one person
+
+  // ACT 2 — ROOT CAUSE: Show the mechanical constraint
+  SingleThreaded,           //  4 — One task at a time
+  CallStackAnimation,       //  5 — Visual proof: the call stack
+
+  // ACT 3 — SOLUTION: Introduce the hero and the mechanism
+  WhyWorkersExist,          //  6 — Threads: the solution exists
+  HowPostMessageWorks,      //  7 — How they communicate (animated back-and-forth)
+  BrowserApiScene,          //  8 — How workers are created via the Browser API
+
+  // ACT 4 — PARTICIPATION + THE STORY
+  AudienceParticipation,    //  9 — Become the browser! (roles + props)
+  UserAction,               // 10 — User gives a task
+  WorkerReceiving,          // 11 — Worker receives the task
+  WorkerSendingBack,        // 12 — Worker sends the result back
+
+  // ACT 5 — FULL PICTURE: Deep dive (now the audience can appreciate it)
+  // WorkerCallStackAnimation, // hidden — uncomment to restore
+
+  // ACT 6 — PROOF: Real-world validation
+  CompaniesUsingWorkers,    // 13 — Figma, Spotify, Google Docs — they all use this
+
+  // ACT 7 — PRACTICE: Do it yourself
+  CodepenGroupCoding,       // 14 — Group coding in CodePen
+
+  // ACT 8 — CLOSE
+  ClosingSlide,             // 15 — Closing lesson + thank you
 ]
 
 export function PresentationContainer() {

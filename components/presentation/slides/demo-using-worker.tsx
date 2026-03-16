@@ -52,8 +52,10 @@ export function DemoUsingWorker() {
   }
 
   const reset = () => {
+    setIsRunning(false)
     setResult(null)
     setExecutionTime(null)
+    setCounter(0)
     if (workerRef.current) {
       workerRef.current.terminate()
       workerRef.current = null

@@ -1,25 +1,25 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { CheckCircle2, Cpu, MessageSquare, Zap } from "lucide-react"
+import { CheckCircle2, Cpu, MessageSquare, Zap, Heart } from "lucide-react"
 
 const concepts = [
   {
     icon: Cpu,
     title: "The Problem",
-    description: "JavaScript does one thing at a time. Heavy work freezes your page.",
+    description: "JavaScript does one thing at a time. Heavy work freezes your page — and freezes leak trust.",
     color: "text-destructive",
   },
   {
     icon: Zap,
     title: "The Solution",
-    description: "Workers do hard work separately. Your page stays smooth.",
+    description: "Workers do hard work separately. Your page stays smooth. Your experience stays generous.",
     color: "text-primary",
   },
   {
     icon: MessageSquare,
     title: "How They Talk",
-    description: "They send messages back and forth using postMessage.",
+    description: "They send messages back and forth using postMessage. Isolation forces clarity.",
     color: "text-accent",
   },
   {
@@ -43,9 +43,12 @@ export function ReviewSummary() {
   return (
     <div className="space-y-8">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What You Just Learned</h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Here are the key ideas. You got this!
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">The Real Lesson</h2>
+        <p className="text-sm text-muted-foreground uppercase tracking-widest mb-3">The Emotional Architecture</p>
+        <p className="text-lg text-foreground max-w-2xl mx-auto font-medium">
+          Web Workers are not about speed.
+          <br />
+          <span className="text-primary font-bold">They&apos;re about respect.</span>
         </p>
       </motion.div>
 
@@ -86,6 +89,21 @@ export function ReviewSummary() {
         </div>
       </motion.div>
 
+      {/* Respect pillars */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.45 }}
+        className="grid grid-cols-2 md:grid-cols-4 gap-3"
+      >
+        {["Attention", "Interaction", "Momentum", "Human patience"].map((item, i) => (
+          <div key={item} className="p-3 rounded-xl bg-primary/10 border border-primary/20 text-center">
+            <Heart className="h-4 w-4 text-primary mx-auto mb-1" />
+            <p className="text-sm font-semibold text-foreground">{item}</p>
+          </div>
+        ))}
+      </motion.div>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -93,7 +111,11 @@ export function ReviewSummary() {
         className="p-4 rounded-xl bg-primary/10 border border-primary/30 text-center"
       >
         <p className="text-foreground">
-          <span className="font-bold text-primary">You did it!</span> You now know how to keep websites fast using Web Workers. Ready to build something?
+          You are not optimizing for CPU cycles.{" "}
+          <span className="font-bold text-primary">You are optimizing for trust.</span>
+        </p>
+        <p className="text-sm text-muted-foreground mt-2">
+          And generous systems are the ones we come back to.
         </p>
       </motion.div>
     </div>
